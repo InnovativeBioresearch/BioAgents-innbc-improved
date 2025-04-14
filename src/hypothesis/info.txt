@@ -1,0 +1,8 @@
+
+Purpose: Generate hypotheses from biograph.file_metadata
+
+Database Link:
+import { db } from '../db': Uses repo’s drizzle-orm client (likely src/db/index.ts), connected to bioagents.
+import { file_metadata } from '../db/schemas': Typed schema ensures hash: string, file_name: string, tags: string[].
+Queries biograph.file_metadata, matching drizzle\0000_low_the_professor.sql.
+Structure: In src/hypothesis/, no new deps, additive logic.

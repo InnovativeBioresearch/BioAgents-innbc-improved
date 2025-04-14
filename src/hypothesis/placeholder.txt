@@ -1,2 +1,0 @@
-
-Purpose: Generate hypotheses from biograph.file_metadata
