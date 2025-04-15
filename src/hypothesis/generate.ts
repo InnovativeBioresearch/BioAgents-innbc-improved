@@ -10,19 +10,19 @@
 //       Maintainers: Verify database queries and consider FM for real generation.
 
 import { db } from '../db';
-import { file_metadata } from '../db/schemas';
-import { inArray } from 'drizzle-orm';
+import { fileMetadataTable } from '../db/schemas/filemetadata';
+import { inArray } from 'drizzle-orm/pg-core';
 
 export async function generateHypothesis(fileIds: string[]): Promise<string> {
   try {
     // Fetch files from biograph.file_metadata
     const files = await db
       .select({
-        file_name: file_metadata.file_name,
-        tags: file_metadata.tags,
+        file_name: fileMetadataTable.file_name,
+        tags: fileMetadataTable.tags,
       })
-      .from(file_metadata)
-      .where(inArray(file_metadata.hash, fileIds));
+      .from(fileMetadataTable)
+      .where(inArray(fileMetadataTable.hash, fileIds));
 
     // Mock hypothesis (replace with FM, e.g., OpenAI)
     const hypothesis = `Hypothesis based on files: ${files
