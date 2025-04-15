@@ -2,7 +2,7 @@
 
 An agentic framework for biological research and analysis.
 
-Hackathon submission improving BioAgents:
+# Hackathon submission improving BioAgents:
 - Knowledge graph: Added embedding (vector(1536)), HNSW index, hypothesis_id link.
 - Hypothesis generation: generate.ts queries file_metadata.
 - Hypothesis testing: test.ts updates hypotheses.
