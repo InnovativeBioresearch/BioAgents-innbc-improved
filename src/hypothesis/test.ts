@@ -1,5 +1,5 @@
 // Title: Hypothesis Testing for BioAgents
-// Author: InnovativeBioresearch (Jonathan Fior)
+// Author: InnovativeBioresearch (jonathan Fior)
 // Date: 2025-04-14
 // Description: Tests hypotheses by updating biograph.hypotheses with scores and status.
 //   - Sets judgellm_score and status (approved/rejected) based on FM input.
@@ -9,20 +9,20 @@
 //       Maintainers: Test with real FM scores (e.g., from plugin-bioagent) and validate status logic.
 
 import { db } from '../db';
-import { hypotheses } from '../db/schemas';
-import { eq } from 'drizzle-orm';
+import { hypothesesTable } from '../db/schemas/hypotheses';
+import { eq } from 'drizzle-orm/pg-core';
 
 export async function testHypothesis(hypothesisId: string, fmScore: number): Promise<void> {
   try {
-    // Update hypothesis
+    // Update hypothesis in biograph.hypotheses
     await db
-      .update(hypotheses)
+      .update(hypothesesTable)
       .set({
-        judgellm_score: fmScore,
+        judgellmScore: fmScore.toFixed(2), // Convert number to string for numeric(5,2)
         status: fmScore >= 0.8 ? 'approved' : 'rejected',
-        updated_at: new Date(),
+        updatedAt: new Date(),
       })
-      .where(eq(hypotheses.id, hypothesisId));
+      .where(eq(hypothesesTable.id, hypothesisId));
 
     console.log(`Hypothesis ${hypothesisId} tested with score ${fmScore}`);
   } catch (error) {
