@@ -2,8 +2,6 @@
 
 An agentic framework for biological research and analysis.
 
-## Getting Started
-
 Hackathon submission improving BioAgents:
 - Knowledge graph: Added embedding (vector(1536)), HNSW index, hypothesis_id link.
 - Hypothesis generation: generate.ts queries file_metadata.
@@ -11,6 +9,8 @@ Hackathon submission improving BioAgents:
 - Updated index.ts to add processFiles/evaluateHypothesis, preserving @elizaos/core project.
 - Fixed schema imports (fileMetadataTable, hypothesesTable), drizzle-orm/pg-core, and console error (tsconfig.json).
 Blocked by @elizaos/cli bugs. Please verify migrations and TypeScript build.
+
+## Getting Started
 
 See [SETUP.md](SETUP.md) for detailed local development setup instructions.
 
